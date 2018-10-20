@@ -58,7 +58,7 @@ client.connect()
 
 def createNormalDist(mu, sigma = 0, allow_negative = False):
 	while True:
-		val = random.normal(mu, sigma)
+		val = random.normalvariate(mu, sigma)
 		if val < 0 and not allow_negative:
 			yield 0
 		else:
