@@ -12,12 +12,13 @@ from cl_args import set_aio_creds
 # Import Adafruit IO MQTT client.
 from Adafruit_IO import MQTTClient
 
+from mqtt_generators import MQTTVars
+from mqtt_generators import mqtt_gen
+
 config.COMMAND_LINE_ARGS = sys.argv
 print ('command line args: ', config.COMMAND_LINE_ARGS)
 
 set_aio_creds()
-ADAFRUIT_IO_USERNAME = config.ADAFRUIT_IO_USERNAME
-ADAFRUIT_IO_KEY = config.ADAFRUIT_IO_KEY
 
 # Define callback functions which will be called when certain events happen.
 def connected(client):
@@ -42,7 +43,7 @@ def message(client, feed_id, payload):
 
 
 # Create an MQTT client instance.
-client = MQTTClient(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
+client = MQTTClient(config.ADAFRUIT_IO_USERNAME, config.ADAFRUIT_IO_KEY)
 
 # Setup the callback functions defined above.
 client.on_connect    = connected
@@ -63,7 +64,7 @@ client.loop_background()
 print('Publishing a new message every 10 seconds (press Ctrl-C to quit)...')
 while True:
     value = random.randint(0, 100)
-    print('Publishing {0} to DemoFeed.'.format(value))
+    print('Publishing {0} to test.'.format(value))
     client.publish('test', value)
     time.sleep(10)
 
