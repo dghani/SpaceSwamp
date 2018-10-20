@@ -52,6 +52,56 @@ client.on_message    = message
 # Connect to the Adafruit IO server.
 client.connect()
 
+
+
+
+def createNormalDist(mu, sigma = 0, allow_negative = False):
+	while True:
+		val = random.normal(mu, sigma)
+		if val < 0 and not allow_negative:
+			yield 0
+		else:
+			yield val
+
+generators = {}
+generators['atmosphere.atmosphere-oxygen'] = createNormalDist(21, 0.1)
+generators['atmosphere.atmosphere-carbon-dioxide'] = createNormalDist(0.04, 0.05)
+generators['atmosphere.atmosphere-carbon-monoxide'] = createNormalDist(0.1, 0.1)
+generators['atmosphere.atmosphere-water'] = createNormalDist(0)
+generators['atmosphere.atmosphere-pressure'] = createNormalDist(0)
+generators['atmosphere.atmosphere-temperature'] = createNormalDist(70, 0.1)
+generators['atmosphere.atmosphere-volatiles'] = createNormalDist(0)
+generators['atmosphere.atmosphere-humidity'] = createNormalDist(0)
+generators['by-products.by-products-duckweed'] = createNormalDist(0)
+generators['by-products.by-products-food-crop-plants'] = createNormalDist(0)
+generators['by-products.by-products-algae'] = createNormalDist(0)
+generators['composting-bioreactor.composting-bioreactor-temperature'] = createNormalDist(0)
+generators['composting-bioreactor.composting-bioreactor-ph'] = createNormalDist(0)
+generators['composting-bioreactor.composting-bioreactor-influent-rate'] = createNormalDist(0)
+generators['composting-bioreactor.composting-bioreactor-biomass-influent-rate'] = createNormalDist(0)
+generators['composting-bioreactor.composting-bioreactor-compost-effluent-rate'] = createNormalDist(0)
+generators['composting-bioreactor.composting-bioreactor-gas-production-rate'] = createNormalDist(0)
+generators['composting-bioreactor.composting-bioreactor-microorganism'] = createNormalDist(0)
+generators['composting-bioreactor.composting-bioreactor-pressure'] = createNormalDist(0)
+generators['oxygen'] = createNormalDist(0)
+generators['test'] = createNormalDist(0)
+generators['grinder.grinder-flow-meter'] = createNormalDist(0)
+generators['grinder.grinder-heat-monitor'] = createNormalDist(0)
+generators['grinder.grinder-leak-detection'] = createNormalDist(0)
+generators['growth-chambers.growth-chambers-nutrient-levels'] = createNormalDist(0)
+generators['growth-chambers.growth-chambers-ph'] = createNormalDist(0)
+generators['growth-chambers.growth-chambers-dissolved-oxygen'] = createNormalDist(0)
+generators['growth-chambers.growth-chambers-dissolved-carbon-dioxide'] = createNormalDist(0)
+generators['growth-chambers.growth-chambers-optical-density'] = createNormalDist(0)
+generators['growth-chambers.growth-chambers-light-levels'] = createNormalDist(0)
+generators['growth-chambers.growth-chambers-pressure'] = createNormalDist(0)
+generators['pipes-infrastructure.pipes-infrastructure-leak-detection'] = createNormalDist(0)
+generators['portable-water-system.portable-water-system-ph'] = createNormalDist(0)
+generators['portable-water-system.portable-water-system-tds'] = createNormalDist(0)
+generators['portable-water-system.portable-water-system-toc'] = createNormalDist(0)
+generators['portable-water-system.portable-water-system-particulate-concentration'] = createNormalDist(0)
+generators['regolith-cleaning.regolith-cleaning-perchlorates'] = createNormalDist(0)
+
 # Now the program needs to use a client loop function to ensure messages are
 # sent and received.  There are a few options for driving the message loop,
 # depending on what your program needs to do.
@@ -59,13 +109,15 @@ client.connect()
 # The first option is to run a thread in the background so you can continue
 # doing things in your program.
 client.loop_background()
-# Now send new values every 10 seconds.
-print('Publishing a new message every 10 seconds (press Ctrl-C to quit)...')
+
+sleep_seconds = 6
+print('Publishing a new message every {} seconds (press Ctrl-C to quit)...'.format(sleep_seconds))
 while True:
-    value = random.randint(0, 100)
-    print('Publishing {0} to DemoFeed.'.format(value))
-    client.publish('test', value)
-    time.sleep(10)
+	for feed_name, feed_generator in generators.items():
+		next = feed_generator.__next__()
+		print('Publishing to {}: {}'.format(feed_name, next))
+		client.publish(feed_name, next)
+		time.sleep(sleep_seconds)
 
 # Another option is to pump the message loop yourself by periodically calling
 # the client loop function.  Notice how the loop below changes to call loop
