@@ -4,46 +4,20 @@
 import random
 import sys
 import time
+import config
+
+#import commandline args helper functions
+from cl_args import set_aio_creds
 
 # Import Adafruit IO MQTT client.
 from Adafruit_IO import MQTTClient
 
-COMMAND_LINE_ARGS = sys.argv
-print ('command line args: ', COMMAND_LINE_ARGS)
-ADAFRUIT_IO_USERNAME = 'YOUR_AIO_USERNAME'
-ADAFRUIT_IO_KEY = 'YOUR_AIO_KEY'
-
-def set_aio_creds():
-    global ADAFRUIT_IO_USERNAME
-    global ADAFRUIT_IO_KEY
-    #get adafruit.io username and key from environment variables to avoid
-    #exposing them on github
-    if len(COMMAND_LINE_ARGS) < 3 :
-        print ('insufficient command line variables')
-        print ('Adafruit.IO username and key must be first and 2nd command line args')
-        exit()
-
-    # Set your Adafruit IO username.
-    # (go to https://accounts.adafruit.com to find your username)
-    ADAFRUIT_IO_USERNAME = COMMAND_LINE_ARGS[1]
-
-    if ADAFRUIT_IO_USERNAME == 'YOUR_AIO_USERNAME' :
-        print ('invalid Adafruit.IO username')
-        exit()
-    else:
-        print ('Adafruit.IO username: ', ADAFRUIT_IO_USERNAME)
-
-    # Set to your Adafruit IO key.
-    # Remember, your key is a secret,
-    # so make sure not to publish it when you publish this code!
-    ADAFRUIT_IO_KEY = COMMAND_LINE_ARGS[2]
-    if ADAFRUIT_IO_KEY == 'YOUR_AIO_KEY' :
-        print ('Invalid Adafruit.IO key')
-        exit()
-    else:
-        print ('Adafruit.IO key: ', ADAFRUIT_IO_KEY)
+config.COMMAND_LINE_ARGS = sys.argv
+print ('command line args: ', config.COMMAND_LINE_ARGS)
 
 set_aio_creds()
+ADAFRUIT_IO_USERNAME = config.ADAFRUIT_IO_USERNAME
+ADAFRUIT_IO_KEY = config.ADAFRUIT_IO_KEY
 
 # Define callback functions which will be called when certain events happen.
 def connected(client):
