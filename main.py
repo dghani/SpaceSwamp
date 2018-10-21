@@ -145,7 +145,7 @@ generators['by-products.by-products-algae'] = setup_generator(
 generators['composting-bioreactor.composting-bioreactor-temperature'] = setup_generator(
 [{'function_name': 'normal', 'mu': 0, 'sigma': 0.5},
 {'function_name': 'sine', 		'offset': 0, 	'amplitude': 1, 	'period': 29},
-{'function_name': 'saw', 		'offset': 0, 	'amplitude': 36, 	'period': 700},
+{'function_name': 'saw', 		'offset': 36, 	'amplitude': 1, 	'period': 700},
 {'function_name': 'triangle', 	'offset': 0, 	'amplitude': 1, 	'period': 3}])
 
 
@@ -305,7 +305,7 @@ generators['portable-water-system.portable-water-system-particulate-concentratio
 # doing things in your program.
 client.loop_background()
 
-sleep_seconds = 1.5
+sleep_seconds = 1.2
 print('Publishing a new message every {} seconds (press Ctrl-C to quit)...'.format(sleep_seconds))
 while True:
 	for feed_name, feed_generator in generators.items():
