@@ -12,8 +12,7 @@ from cl_args import set_aio_creds
 # Import Adafruit IO MQTT client.
 from Adafruit_IO import MQTTClient
 
-from mqtt_generators import MQTTVars
-from mqtt_generators import mqtt_gen
+from mqtt_generators import *
 
 config.COMMAND_LINE_ARGS = sys.argv
 print ('command line args: ', config.COMMAND_LINE_ARGS)
@@ -63,6 +62,12 @@ def createNormalDist(mu, sigma = 0, allow_negative = False):
 			yield 0
 		else:
 			yield val
+
+def setup_generator(**args):
+    while True:
+        val = 0
+
+        yield val
 
 generators = {}
 generators['atmosphere.atmosphere-oxygen'] = createNormalDist(21, 0.1)
