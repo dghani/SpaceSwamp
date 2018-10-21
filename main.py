@@ -65,14 +65,16 @@ def createNormalDist(mu, sigma = 0, allow_negative = False):
 		else:
 			yield val
 
-def setup_generator(args):
-    while True:
-        val = call_function(**args)
-        yield val
+def setup_generator(args_array):
+	while True:
+		val = 0.0
+		for args in args_array:
+			val += call_function(**args)
+		yield val
 
 generators = {}
 #generators['test'] = setup_generator({'function_name':'normal', 'mu': 50, 'sigma': 10})
-generators['test'] = setup_generator({'function_name':'sine', 'offset': 50, 'amplitude': 10, 'period': 60})
+generators['test'] = setup_generator([{'function_name':'sine', 'offset': 50, 'amplitude': 10, 'period': 60}])
 # generators['atmosphere.atmosphere-oxygen'] = createNormalDist(21, 0.1)
 # generators['atmosphere.atmosphere-carbon-dioxide'] = createNormalDist(0.04, 0.05)
 # generators['atmosphere.atmosphere-carbon-monoxide'] = createNormalDist(0.1, 0.1)
