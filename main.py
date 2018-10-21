@@ -14,6 +14,8 @@ from Adafruit_IO import MQTTClient
 
 from mqtt_generators import *
 
+from math_functions import call_function
+
 config.COMMAND_LINE_ARGS = sys.argv
 print ('command line args: ', config.COMMAND_LINE_ARGS)
 
@@ -63,50 +65,51 @@ def createNormalDist(mu, sigma = 0, allow_negative = False):
 		else:
 			yield val
 
-def setup_generator(**args):
+def setup_generator(args):
     while True:
-        val = 0
-
+        val = call_function(**args)
         yield val
 
 generators = {}
-generators['atmosphere.atmosphere-oxygen'] = createNormalDist(21, 0.1)
-generators['atmosphere.atmosphere-carbon-dioxide'] = createNormalDist(0.04, 0.05)
-generators['atmosphere.atmosphere-carbon-monoxide'] = createNormalDist(0.1, 0.1)
-generators['atmosphere.atmosphere-water'] = createNormalDist(0)
-generators['atmosphere.atmosphere-pressure'] = createNormalDist(0)
-generators['atmosphere.atmosphere-temperature'] = createNormalDist(70, 0.1)
-generators['atmosphere.atmosphere-volatiles'] = createNormalDist(0)
-generators['atmosphere.atmosphere-humidity'] = createNormalDist(0)
-generators['by-products.by-products-duckweed'] = createNormalDist(0)
-generators['by-products.by-products-food-crop-plants'] = createNormalDist(0)
-generators['by-products.by-products-algae'] = createNormalDist(0)
-generators['composting-bioreactor.composting-bioreactor-temperature'] = createNormalDist(0)
-generators['composting-bioreactor.composting-bioreactor-ph'] = createNormalDist(0)
-generators['composting-bioreactor.composting-bioreactor-influent-rate'] = createNormalDist(0)
-generators['composting-bioreactor.composting-bioreactor-biomass-influent-rate'] = createNormalDist(0)
-generators['composting-bioreactor.composting-bioreactor-compost-effluent-rate'] = createNormalDist(0)
-generators['composting-bioreactor.composting-bioreactor-gas-production-rate'] = createNormalDist(0)
-generators['composting-bioreactor.composting-bioreactor-microorganism'] = createNormalDist(0)
-generators['composting-bioreactor.composting-bioreactor-pressure'] = createNormalDist(0)
-generators['oxygen'] = createNormalDist(0)
-generators['test'] = createNormalDist(0)
-generators['grinder.grinder-flow-meter'] = createNormalDist(0)
-generators['grinder.grinder-heat-monitor'] = createNormalDist(0)
-generators['grinder.grinder-leak-detection'] = createNormalDist(0)
-generators['growth-chambers.growth-chambers-nutrient-levels'] = createNormalDist(0)
-generators['growth-chambers.growth-chambers-ph'] = createNormalDist(0)
-generators['growth-chambers.growth-chambers-dissolved-oxygen'] = createNormalDist(0)
-generators['growth-chambers.growth-chambers-dissolved-carbon-dioxide'] = createNormalDist(0)
-generators['growth-chambers.growth-chambers-optical-density'] = createNormalDist(0)
-generators['growth-chambers.growth-chambers-light-levels'] = createNormalDist(0)
-generators['growth-chambers.growth-chambers-pressure'] = createNormalDist(0)
-generators['pipes-infrastructure.pipes-infrastructure-leak-detection'] = createNormalDist(0)
-generators['portable-water-system.portable-water-system-ph'] = createNormalDist(0)
-generators['portable-water-system.portable-water-system-tds'] = createNormalDist(0)
-generators['portable-water-system.portable-water-system-toc'] = createNormalDist(0)
-generators['portable-water-system.portable-water-system-particulate-concentration'] = createNormalDist(0)
-generators['regolith-cleaning.regolith-cleaning-perchlorates'] = createNormalDist(0)
+#generators['test'] = setup_generator({'function_name':'normal', 'mu': 50, 'sigma': 10})
+generators['test'] = setup_generator({'function_name':'sine', 'offset': 50, 'amplitude': 10, 'period': 60})
+# generators['atmosphere.atmosphere-oxygen'] = createNormalDist(21, 0.1)
+# generators['atmosphere.atmosphere-carbon-dioxide'] = createNormalDist(0.04, 0.05)
+# generators['atmosphere.atmosphere-carbon-monoxide'] = createNormalDist(0.1, 0.1)
+# generators['atmosphere.atmosphere-water'] = createNormalDist(0)
+# generators['atmosphere.atmosphere-pressure'] = createNormalDist(0)
+# generators['atmosphere.atmosphere-temperature'] = createNormalDist(70, 0.1)
+# generators['atmosphere.atmosphere-volatiles'] = createNormalDist(0)
+# generators['atmosphere.atmosphere-humidity'] = createNormalDist(0)
+# generators['by-products.by-products-duckweed'] = createNormalDist(0)
+# generators['by-products.by-products-food-crop-plants'] = createNormalDist(0)
+# generators['by-products.by-products-algae'] = createNormalDist(0)
+# generators['composting-bioreactor.composting-bioreactor-temperature'] = createNormalDist(0)
+# generators['composting-bioreactor.composting-bioreactor-ph'] = createNormalDist(0)
+# generators['composting-bioreactor.composting-bioreactor-influent-rate'] = createNormalDist(0)
+# generators['composting-bioreactor.composting-bioreactor-biomass-influent-rate'] = createNormalDist(0)
+# generators['composting-bioreactor.composting-bioreactor-compost-effluent-rate'] = createNormalDist(0)
+# generators['composting-bioreactor.composting-bioreactor-gas-production-rate'] = createNormalDist(0)
+# generators['composting-bioreactor.composting-bioreactor-microorganism'] = createNormalDist(0)
+# generators['composting-bioreactor.composting-bioreactor-pressure'] = createNormalDist(0)
+# generators['oxygen'] = createNormalDist(0)
+# generators['test'] = createNormalDist(0)
+# generators['grinder.grinder-flow-meter'] = createNormalDist(0)
+# generators['grinder.grinder-heat-monitor'] = createNormalDist(0)
+# generators['grinder.grinder-leak-detection'] = createNormalDist(0)
+# generators['growth-chambers.growth-chambers-nutrient-levels'] = createNormalDist(0)
+# generators['growth-chambers.growth-chambers-ph'] = createNormalDist(0)
+# generators['growth-chambers.growth-chambers-dissolved-oxygen'] = createNormalDist(0)
+# generators['growth-chambers.growth-chambers-dissolved-carbon-dioxide'] = createNormalDist(0)
+# generators['growth-chambers.growth-chambers-optical-density'] = createNormalDist(0)
+# generators['growth-chambers.growth-chambers-light-levels'] = createNormalDist(0)
+# generators['growth-chambers.growth-chambers-pressure'] = createNormalDist(0)
+# generators['pipes-infrastructure.pipes-infrastructure-leak-detection'] = createNormalDist(0)
+# generators['portable-water-system.portable-water-system-ph'] = createNormalDist(0)
+# generators['portable-water-system.portable-water-system-tds'] = createNormalDist(0)
+# generators['portable-water-system.portable-water-system-toc'] = createNormalDist(0)
+# generators['portable-water-system.portable-water-system-particulate-concentration'] = createNormalDist(0)
+# generators['regolith-cleaning.regolith-cleaning-perchlorates'] = createNormalDist(0)
 
 # Now the program needs to use a client loop function to ensure messages are
 # sent and received.  There are a few options for driving the message loop,
@@ -116,7 +119,7 @@ generators['regolith-cleaning.regolith-cleaning-perchlorates'] = createNormalDis
 # doing things in your program.
 client.loop_background()
 
-sleep_seconds = 6
+sleep_seconds = 5
 print('Publishing a new message every {} seconds (press Ctrl-C to quit)...'.format(sleep_seconds))
 while True:
 	for feed_name, feed_generator in generators.items():
