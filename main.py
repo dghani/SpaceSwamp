@@ -75,6 +75,16 @@ def setup_generator(args_array):
 generators = {}
 #generators['test'] = setup_generator({'function_name':'normal', 'mu': 50, 'sigma': 10})
 generators['test'] = setup_generator([{'function_name':'sine', 'offset': 50, 'amplitude': 10, 'period': 60}])
+
+generators['atmosphere.atmosphere-oxygen'] = setup_generator([{'function_name': 'normal', 'mu': 9.26, 'sigma': 0.089}, {'function_name': 'sine', 'offset': 6.51, 'amplitude': 0.024, 'period': 60}])
+
+generators['atmosphere.atmosphere-carbon-dioxide'] = setup_generator([{'function_name': 'sine', 'offset': 0.011, 'amplitude': 0.0077, 'period': 60}, {'function_name': 'saw', 'offset': -0.88, 'amplitude': -.0078, 'period': -0.88}])
+
+generators['atmosphere.atmosphere-carbon-monoxide'] = setup_generator([{'function_name': 'sine', 'offset': -.002, 'amplitude': 0.024, 'period': 60, 'allow_negative': False}])
+
+generators['atmosphere.atmosphere-temperature'] = setup_generator([{'function_name': 'normal', 'mu': 0, 'sigma': 0.2}, {'function_name': 'sine', 'offset': 5.05, 'amplitude': 0.0011, 'period': 60}, {'function_name': 'saw', 'offset': 90.73, 'amplitude': 2.68, 'period': 7}, {'function_name': 'triangle', 'offset': -24.85, 'amplitude': -3.7, 'period': 3}])
+
+generators['growth-chambers.growth-chambers-ph'] = setup_generator([{'function_name': 'normal', 'mu': -17.9, 'sigma': 0.01}, {'function_name': 'sine', 'offset': -0.15, 'amplitude': 0.6, 'period': 60}, {'function_name': 'saw', 'offset': 7.018, 'amplitude': 1.65, 'period': 7}, {'function_name': 'triangle', 'offset': 0.16, 'amplitude': -1.7, 'period': 3}])
 # generators['atmosphere.atmosphere-oxygen'] = createNormalDist(21, 0.1)
 # generators['atmosphere.atmosphere-carbon-dioxide'] = createNormalDist(0.04, 0.05)
 # generators['atmosphere.atmosphere-carbon-monoxide'] = createNormalDist(0.1, 0.1)
@@ -111,7 +121,8 @@ generators['test'] = setup_generator([{'function_name':'sine', 'offset': 50, 'am
 # generators['portable-water-system.portable-water-system-tds'] = createNormalDist(0)
 # generators['portable-water-system.portable-water-system-toc'] = createNormalDist(0)
 # generators['portable-water-system.portable-water-system-particulate-concentration'] = createNormalDist(0)
-# generators['regolith-cleaning.regolith-cleaning-perchlorates'] = createNormalDist(0)
+generators['regolith-cleaning.regolith-cleaning-perchlorates'] = setup_generator([{'function_name': 'normal', 'mu': 0, 'sigma': 0.005, 'allow_negative': False},
+{'function_name': 'triangle', 'offset': -0.16, 'amplitude': 1, 'period': 50, 'allow_negative': False}])
 
 # Now the program needs to use a client loop function to ensure messages are
 # sent and received.  There are a few options for driving the message loop,
@@ -121,7 +132,7 @@ generators['test'] = setup_generator([{'function_name':'sine', 'offset': 50, 'am
 # doing things in your program.
 client.loop_background()
 
-sleep_seconds = 5
+sleep_seconds = 2
 print('Publishing a new message every {} seconds (press Ctrl-C to quit)...'.format(sleep_seconds))
 while True:
 	for feed_name, feed_generator in generators.items():
