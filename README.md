@@ -6,5 +6,6 @@ Adaptive Ecological Life Support System (AELSS) is a simple, robust, adaptable, 
 Hardware Diagram:
 ![Hardware Diagram](README_Presentation_graphic.png)
 ---
+
 Biodigester Model:
 ![Biodigester Model](AELSS.png)
