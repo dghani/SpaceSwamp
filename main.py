@@ -145,36 +145,36 @@ generators['by-products.by-products-algae'] = setup_generator(
 generators['composting-bioreactor.composting-bioreactor-temperature'] = setup_generator(
 [{'function_name': 'normal', 'mu': 0, 'sigma': 0.5},
 {'function_name': 'sine', 		'offset': 0, 	'amplitude': 1, 	'period': 29},
-{'function_name': 'saw', 		'offset': 0, 	'amplitude': 93, 	'period': 700},
+{'function_name': 'saw', 		'offset': 0, 	'amplitude': 36, 	'period': 700},
 {'function_name': 'triangle', 	'offset': 0, 	'amplitude': 1, 	'period': 3}])
 
-#todo
+
 generators['composting-bioreactor.composting-bioreactor-ph'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
-{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
+[{'function_name': 'normal', 'mu': 0, 'sigma': 1},
+{'function_name': 'sine', 		'offset': 6.5, 	'amplitude': 0.15, 	'period': 3600},
 {'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
-{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
+{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0.05, 	'period': 1}])
 
-#todo
+
 generators['composting-bioreactor.composting-bioreactor-influent-rate'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
-{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
+[{'function_name': 'normal', 'mu': 0, 'sigma': 0.1},
+{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0.05, 	'period': 21},
 {'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
-{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
+{'function_name': 'triangle', 	'offset': 0.00001157407, 	'amplitude': 0.15, 	'period': 3}])
 
-#todo
+
 generators['composting-bioreactor.composting-bioreactor-biomass-influent-rate'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
-{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
+[{'function_name': 'normal', 'mu': 0, 'sigma': 0.1},
+{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0.05, 	'period': 21},
 {'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
-{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
+{'function_name': 'triangle', 	'offset': 0.00001157407, 	'amplitude': 0.15, 	'period': 3}])
 
-#todo
+
 generators['composting-bioreactor.composting-bioreactor-compost-effluent-rate'] = setup_generator(
 [{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
-{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
+{'function_name': 'sine', 		'offset': 0.00000462962, 	'amplitude': 0.05, 	'period': 30},
 {'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
-{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
+{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0.15, 	'period': 86400}])
 
 #todo
 generators['composting-bioreactor.composting-bioreactor-gas-production-rate'] = setup_generator(
@@ -183,117 +183,117 @@ generators['composting-bioreactor.composting-bioreactor-gas-production-rate'] = 
 {'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
 {'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
 
-#todo
+
 generators['composting-bioreactor.composting-bioreactor-microorganism'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
+[{'function_name': 'normal', 'mu': 0, 'sigma': 0.001, 'allow_negative': False},
 {'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
 {'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
 {'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
 
-#todo
+
 generators['composting-bioreactor.composting-bioreactor-pressure'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
-{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
-{'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
-{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
+[{'function_name': 'normal', 'mu': 0, 'sigma': 0.5},
+{'function_name': 'sine', 		'offset': 10, 	'amplitude': 0.1, 	'period': 60},
+{'function_name': 'saw', 		'offset': 0, 	'amplitude': 0.005, 	'period': 7},
+{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 5, 	'period': 86400}])
 
-#todo
+
 generators['grinder.grinder-flow-meter'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
-{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
+[{'function_name': 'normal', 'mu': 0, 'sigma': 0.1},
+{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0.05, 	'period': 21},
 {'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
-{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
+{'function_name': 'triangle', 	'offset': 0.00001157407, 	'amplitude': 0.15, 	'period': 3}])
 
-#todo
+
 generators['grinder.grinder-heat-monitor'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
-{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
-{'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
-{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
+[{'function_name': 'normal', 'mu': 0, 'sigma': 2},
+{'function_name': 'sine', 		'offset': 0, 	'amplitude': 4.5, 	'period': 29},
+{'function_name': 'saw', 		'offset': 0, 	'amplitude': 37, 	'period': 700},
+{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 1, 	'period': 0.001}])
 
-#todo
+
 generators['grinder.grinder-leak-detection'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
+[{'function_name': 'normal', 'mu': 0, 'sigma': 0.0001},
 {'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
 {'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
 {'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
 
 #todo
 generators['growth-chambers.growth-chambers-nutrient-levels'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
+[{'function_name': 'normal', 'mu': 0, 'sigma': 0.001},
 {'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
 {'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
 {'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
 
-#todo
+
 generators['growth-chambers.growth-chambers-dissolved-oxygen'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
-{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
-{'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
-{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
+[{'function_name': 'normal', 'mu': 0, 'sigma': 0.1},
+{'function_name': 'sine', 		'offset': 0, 	'amplitude': 2.5, 	'period': 60},
+{'function_name': 'saw', 		'offset': 7.5, 	'amplitude': 1, 	'period': 7},
+{'function_name': 'triangle', 	'offset': 0, 	'amplitude': .1, 	'period': .37}])
 
-#todo
+
 generators['growth-chambers.growth-chambers-dissolved-carbon-dioxide'] = setup_generator(
 [{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
 {'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
-{'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
-{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
+{'function_name': 'saw', 		'offset': 2, 	'amplitude': .5, 	'period': 7},
+{'function_name': 'triangle', 	'offset': 0, 	'amplitude': .1, 	'period': .5}])
 
-#todo
+# Not sure of value, set to zero.
 generators['growth-chambers.growth-chambers-optical-density'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
+[{'function_name': 'normal', 'mu': 0, 'sigma': 0.0001},
 {'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
 {'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
 {'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
 
-#todo
+
 generators['growth-chambers.growth-chambers-light-levels'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
+[{'function_name': 'normal', 'mu': 0, 'sigma': 5},
 {'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
-{'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
-{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
+{'function_name': 'saw', 		'offset': 110, 	'amplitude': 0, 	'period': 7},
+{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 4, 	'period': 86400}])
 
-#todo
+
 generators['growth-chambers.growth-chambers-pressure'] = setup_generator(
 [{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
-{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
-{'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
-{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
+{'function_name': 'sine', 		'offset': 1, 	'amplitude': 0.048, 	'period': 6000},
+{'function_name': 'saw', 		'offset': 0, 	'amplitude': 0.001, 	'period': 7},
+{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0.001, 	'period': 3}])
 
-#todo
+
 generators['pipes-infrastructure.pipes-infrastructure-leak-detection'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
+[{'function_name': 'normal', 'mu': 0, 'sigma': 0.0001},
 {'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
 {'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
 {'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
 
-#todo
+
 generators['portable-water-system.portable-water-system-ph'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
-{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
+[{'function_name': 'normal', 'mu': 0, 'sigma': 0.25},
+{'function_name': 'sine', 		'offset': 7, 	'amplitude': 0.5, 	'period': 86400},
 {'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
 {'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
 
-#todo
+
 generators['portable-water-system.portable-water-system-tds'] = setup_generator(
 [{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
-{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
-{'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
-{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
+{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0.1, 	'period': 130},
+{'function_name': 'saw', 		'offset': 5, 	'amplitude': 0.5, 	'period': 130},
+{'function_name': 'triangle', 	'offset': 2, 	'amplitude': 2, 	'period': 86400}])
 
-#todo
+
 generators['portable-water-system.portable-water-system-toc'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
-{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
-{'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
-{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
+[{'function_name': 'normal', 'mu': 0, 'sigma': 0.5},
+{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0.1, 	'period': 130},
+{'function_name': 'saw', 		'offset': 3, 	'amplitude': 0.5, 	'period': 130},
+{'function_name': 'triangle', 	'offset': 1, 	'amplitude': 2, 	'period': 86400}])
 
-#todo
+
 generators['portable-water-system.portable-water-system-particulate-concentration'] = setup_generator(
-[{'function_name': 'normal', 'mu': 0, 'sigma': 0.01},
-{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0, 	'period': 60},
-{'function_name': 'saw', 		'offset': 0, 	'amplitude': 0, 	'period': 7},
-{'function_name': 'triangle', 	'offset': 0, 	'amplitude': 0, 	'period': 3}])
+[{'function_name': 'normal', 'mu': 0, 'sigma': 0.15},
+{'function_name': 'sine', 		'offset': 0, 	'amplitude': 0.1, 	'period': 500},
+{'function_name': 'saw', 		'offset': 1, 	'amplitude': 0.5, 	'period': 500},
+{'function_name': 'triangle', 	'offset': 0.1, 	'amplitude': 0.1, 	'period': 86400}])
 
 #---- End of default generators 
 
